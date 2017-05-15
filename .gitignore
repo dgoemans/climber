@@ -1,0 +1,14 @@
+# Project ignore Files:
+
+
+# Default ignore files
+node_modules/
+**/.DS_Store
+.settings
+**/.vs
+**/.vscode
+!**/.vscode/tasks.json
+.idea
+Thumbs.db
+**/Thumbs.db
+Desktop.ini
