@@ -8,7 +8,7 @@ module Climber {
         public init():void {
             this.game.stage.backgroundColor = '#ffffff';
 
-            let button:Phaser.Button = new Phaser.Button(this.game, this.game.width / 2, this.game.height - 100, 'StartButton', ():void => {
+            let button: Phaser.Button = new Phaser.Button(this.game, this.game.width / 2, this.game.height - 100, 'StartButton', ():void => {
                 //Go to Game state
                 this.game.state.start('GamePlay');
             });

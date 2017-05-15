@@ -41,7 +41,7 @@ module Climber {
             console.log('preloader');
             this.loadingText.setText('Load Complete');
 
-            this.game.state.start('TitleScreen');
+            this.game.state.start('GamePlay');
         }
 
     }
