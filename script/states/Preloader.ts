@@ -1,6 +1,7 @@
 module Climber {
     export class Preloader extends Phaser.State {
         public loadingText:Phaser.Text;
+        public game: Phaser.Game;
 
         constructor() {
             super();
@@ -37,6 +38,7 @@ module Climber {
         }
 
         public loadComplete():void {
+            console.log('preloader');
             this.loadingText.setText('Load Complete');
 
             this.game.state.start('TitleScreen');

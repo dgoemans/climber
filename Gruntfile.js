@@ -14,7 +14,7 @@ module.exports = function (grunt) {
         typescript: {
             options: {
                 module: 'amd',
-                target: 'es6',
+                target: 'es5',
                 sourceMap: false,
                 declaration: false,
                 references: [
