@@ -6,7 +6,7 @@ node_modules/
 **/.DS_Store
 .settings
 **/.vs
-**/.vscode
+**/.vscode/*
 !**/.vscode/tasks.json
 .idea
 Thumbs.db
