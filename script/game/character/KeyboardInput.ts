@@ -10,7 +10,7 @@ module Climber {
 
         private onUpPressed(): void {
             console.log("UP Pressed");
-            this.gameObject.sendMessage("Jump");
+            this.gameObject.sendMessage("jump");
         }
     }
 }

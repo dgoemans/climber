@@ -4,6 +4,7 @@ module Core {
         private components: Component[];
 
         constructor() {
+            this.components = [];
         }
 
         protected addComponent(component: Component) : void {

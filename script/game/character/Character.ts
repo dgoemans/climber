@@ -4,9 +4,8 @@ module Climber {
         constructor(game: Phaser.Game) {
             super();
 
-            let input: Core.Component = new KeyboardInput(this, game);
-            
-            this.addComponent(input);
+            this.addComponent(new KeyboardInput(this, game));
+            this.addComponent(new CharacterMovement(this, game));
         }
     }
 }

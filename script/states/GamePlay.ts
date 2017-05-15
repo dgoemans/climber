@@ -7,6 +7,8 @@ module Climber {
 
         public init():void {
             this.game.stage.backgroundColor = '#bab397';
+
+            new Character(this.game);
         }
 
         public preload():void {

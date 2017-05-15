@@ -8,7 +8,7 @@ module Core {
         }
 
         public sendMessage(message: string): void {
-            if(this[message] !== null) {
+            if(this[message] !== undefined) {
                 this[message]();
             }            
         }
