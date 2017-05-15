@@ -2,12 +2,12 @@ module Climber {
     export class Game {
         game: Phaser.Game;
         constructor() {
-            this.game = new Phaser.Game(Global.GameWidth, Global.GameHeight, Phaser.AUTO, 'content');
+            this.game = new Phaser.Game(1280, 720, Phaser.AUTO, 'content');
 
             //load your states
-            this.game.state.add('Preloader', Preloader, false);
-            this.game.state.add('TitleScreen', TitleScreen, false);
-            this.game.state.add('GamePlay', GamePlay, false);
+            this.game.state.add('Preloader', 'Preloader', false);
+            this.game.state.add('TitleScreen', 'TitleScreen', false);
+            this.game.state.add('GamePlay', 'GamePlay', false);
 
         }
 
