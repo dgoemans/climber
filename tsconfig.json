@@ -1,0 +1,10 @@
+{
+    "compilerOptions": 
+    {
+        "target": "es5",
+        "module": "amd",
+        "sourceMap": false,
+        "declaration": false,
+        "references": [ "node_modules/phaser/typescript/phaser.d.ts" ]
+    }
+}

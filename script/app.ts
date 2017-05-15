@@ -9,6 +9,8 @@ module Climber {
             this.game.state.add('TitleScreen', 'TitleScreen', false);
             this.game.state.add('GamePlay', 'GamePlay', false);
 
+            this.start();
+
         }
 
         public start(){
