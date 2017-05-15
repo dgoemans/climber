@@ -1,4 +1,4 @@
-module AdventureRoo {
+module Climber {
     export class GamePlay extends Phaser.State {
         constructor() {
             super();

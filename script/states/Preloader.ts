@@ -1,4 +1,4 @@
-module AdventureRoo {
+module Climber {
     export class Preloader extends Phaser.State {
         public loadingText:Phaser.Text;
 
