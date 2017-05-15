@@ -1,0 +1,22 @@
+{
+  "name": "climber",
+  "version": "1.0.0",
+  "description": "A new take on ice climber",
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:dgoemans/climber.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "0.4.x",
+    "grunt-contrib-connect": "0.10.0",
+    "grunt-contrib-copy": "0.7.0",
+    "grunt-contrib-watch": "0.6.x",
+    "grunt-typescript": "0.8.0",
+    "phaser": "2.6.1",
+    "typescript": "1.8.x"
+  },
+  "engines": {
+    "node": "5.x.x"
+  }
+}

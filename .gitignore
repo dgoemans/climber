@@ -12,3 +12,6 @@ node_modules/
 Thumbs.db
 **/Thumbs.db
 Desktop.ini
+
+.idea
+*.tmp.txt
