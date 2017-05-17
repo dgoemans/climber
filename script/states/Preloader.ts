@@ -17,6 +17,7 @@ module Climber {
 
             this.loadStates = [];
             
+            this.loadStates.push(new ImageLoader(this.game));
             this.loadStates.push(new LevelLoader(this.game));
             
             this.loadingText = this.game.add.text(32, 32, 'Click to start load', {fill: '#ffffff'});

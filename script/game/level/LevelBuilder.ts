@@ -7,11 +7,15 @@ module Climber {
 
             this.game = game;
         }
-        
+
         public buildLevel(name: string): void{
             
             let level = new Level();
             level.map = this.game.add.tilemap('test_1');
+
+            level.map.addTilesetImage('tiles', 'tilesheet');
+
+            let backgroundlayer = level.map.createLayer('Bricks');
         }
     }
 }

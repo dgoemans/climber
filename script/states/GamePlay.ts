@@ -19,11 +19,9 @@ module Climber {
         }
 
         public preload():void {
-            // this.game.world.shutdown();
         }
 
         public render() {
-            // this.game.debug.spriteInfo(this.spir, 120, 132);
         }
 
 
