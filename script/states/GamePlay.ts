@@ -18,7 +18,6 @@ module Climber {
         }
 
         public preload():void {
-            this.game.world.shutdown();
         }
 
     }

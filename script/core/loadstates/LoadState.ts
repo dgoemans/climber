@@ -12,6 +12,9 @@ module Core {
         }
 
         public start():void {
+
+            console.log('started load state');
+
             this.game.load.onLoadStart.add(this.loadStart, this);
             this.game.load.onFileComplete.add(this.fileComplete, this);
             this.game.load.onLoadComplete.add(this.loadComplete, this);
