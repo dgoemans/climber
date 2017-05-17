@@ -1,6 +1,6 @@
 module Climber {
     export class GamePlay extends Phaser.State {
-        
+
         public game: Phaser.Game;
         private levelBuilder: LevelBuilder;
 
@@ -11,8 +11,9 @@ module Climber {
         public init():void {
             this.game.stage.backgroundColor = '#bab397';
             this.levelBuilder = new LevelBuilder(this.game);
-            
+
             new Character(this.game);
+
         }
 
         public preload():void {
@@ -20,6 +21,11 @@ module Climber {
             this.game.camera.x = level.startPosition.x;
             this.game.camera.y = level.startPosition.y;
         }
+
+        public render() {
+            // this.game.debug.spriteInfo(this.spir, 120, 132);
+        }
+
 
     }
 }
