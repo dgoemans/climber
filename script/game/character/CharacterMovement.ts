@@ -5,8 +5,8 @@ module Climber {
             super(gameObject);            
         }
 
-        private jump(): void {
-            console.log("Jump received");
+        private jump(first: string, second: string): void {
+            console.log("Jump received", first, second);
         }
     }
 }

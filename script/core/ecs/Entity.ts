@@ -11,9 +11,9 @@ module Core {
             this.components.push(component);
         }
 
-        public sendMessage(message: string) : void {
+        public sendMessage(...args: any[]) : void {
             for(let component of this.components){
-                component.sendMessage(message);
+                component.sendMessage.apply(component, args);
             }
         }
     }
