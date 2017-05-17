@@ -7,9 +7,12 @@ module Core {
             this.gameObject = gameObject;
         }
 
-        public sendMessage(message: string): void {
-            if(this[message] !== undefined) {
-                this[message]();
+        public sendMessage(...args: any[]): void {
+
+            let method = args.shift();
+
+            if(this[method] !== undefined) {
+                this[method].apply(this, args);
             }            
         }
 
