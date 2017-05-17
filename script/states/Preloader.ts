@@ -3,6 +3,8 @@ module Climber {
         public loadingText:Phaser.Text;
         public game: Phaser.Game;
 
+        private loadStates: Core.LoadState[];
+
         constructor() {
             super();
         }
@@ -13,11 +15,10 @@ module Climber {
             this.game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
             this.game.scale.pageAlignHorizontally = true;
 
-
-            this.game.load.onLoadStart.add(this.loadStart, this);
-            this.game.load.onFileComplete.add(this.fileComplete, this);
-            this.game.load.onLoadComplete.add(this.loadComplete, this);
-
+            this.loadStates = [];
+            
+            this.loadStates.push(new LevelLoader(this.game));
+            
             this.loadingText = this.game.add.text(32, 32, 'Click to start load', {fill: '#ffffff'});
 
             // this.physics.startSystem(Phaser.Physics.ARCADE);
@@ -25,24 +26,20 @@ module Climber {
         }
 
         public preload():void {
-
-            this.game.load.start();
+            this.loadNextState();
+            
         }
 
-        public loadStart():void {
-            this.loadingText.setText('Loading ......');
+        private loadNextState(): void{            
+            if(this.loadStates.length === 0){
+                this.game.state.start('GamePlay');
+            }
+            else
+            {
+                let state = this.loadStates.shift();
+                state.onLoad.addOnce(this.loadNextState, this);
+                state.start();
+            }
         }
-
-        public fileComplete(progress:any, totalLoaded:any, totalFiles:any):void {
-            this.loadingText.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
-        }
-
-        public loadComplete():void {
-            console.log('preloader');
-            this.loadingText.setText('Load Complete');
-
-            this.game.state.start('GamePlay');
-        }
-
     }
 }

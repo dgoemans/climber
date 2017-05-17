@@ -7,18 +7,9 @@
             "taskName": "Grunt",
             "command": "grunt",
             "isShellCommand": true,
-            "args": ["--no-color"],
+            "args": ["-p"],
             "showOutput": "always",
             "isBuildCommand": true
-        },
-        {
-            "taskName": "TypeScript",
-            "command": "tscgrunt",
-            "isShellCommand": true,
-            "args": ["-p", "."],
-            "showOutput": "always",
-            "problemMatcher": "$tsc"
-
         }
     ]
 }
