@@ -17,6 +17,8 @@ module Climber {
 
             let backgroundlayer = level.map.createLayer('Bricks');
 
+            backgroundlayer.resizeWorld();
+
             let objectLayer = level.map.objects['Objects'];
 
             level.startPosition.x = objectLayer[0].x;
