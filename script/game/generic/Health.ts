@@ -3,10 +3,10 @@ module Climber {
 
         private health: number;
 
-        constructor(gameObject: Core.Entity) {
+        constructor(gameObject: Core.Entity, startingHealth: number) {
             super(gameObject);            
 
-            this.health = 1;
+            this.health = startingHealth || 1;
         }
 
         private damage(): void {
