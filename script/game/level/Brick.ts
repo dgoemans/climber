@@ -3,6 +3,8 @@ module Climber {
 
         constructor(game: Phaser.Game) {
             super();
+
+            this.addComponent(new Health(this, 1));
         }
     }
 }
