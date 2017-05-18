@@ -18,8 +18,10 @@ module Climber {
 
         public preload():void {
             let level = this.levelBuilder.buildLevel("test_1");
-            this.game.camera.x = level.startPosition.x;
-            this.game.camera.y = level.startPosition.y;
+            this.game.camera.setPosition(level.startPosition.x, level.startPosition.y);
+        }
+
+        public update(): void {
         }
 
         public render() {
