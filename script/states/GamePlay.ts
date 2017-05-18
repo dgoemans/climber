@@ -1,6 +1,5 @@
 module Climber {
     export class GamePlay extends Phaser.State {
-
         public game: Phaser.Game;
         private levelBuilder: LevelBuilder;
 
