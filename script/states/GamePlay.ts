@@ -11,13 +11,14 @@ module Climber {
         public init():void {
             this.game.stage.backgroundColor = '#bab397';
             this.levelBuilder = new LevelBuilder(this.game);
-            
+
             new Character(this.game);
 
         }
 
         public preload():void {
             let level = this.levelBuilder.buildLevel("test_1");
+
             this.game.camera.setPosition(level.startPosition.x, level.startPosition.y);
         }
 

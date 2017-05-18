@@ -27,10 +27,6 @@ module Climber {
         }
 
         public preload():void {
-            this.game.load.start();
-        }
-
-        public loadStart():void {
             this.loadNextState();            
         }
 
