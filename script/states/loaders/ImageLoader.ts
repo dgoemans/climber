@@ -8,6 +8,7 @@ module Climber {
         public start(): void{
             
              this.game.load.image('tilesheet', 'assets/tiles/tiles.jpg');
+            this.game.load.image('star', 'assets/images/star.png');
 
              super.start();
         }
