@@ -1,15 +1,15 @@
 module Climber {
     export class Character extends Core.Entity {
         public game: Phaser.Game;
-        public characterSprite: Phaser.Sprite;
 
         constructor(game: Phaser.Game) {
             super();
             this.game = game;
 
+            this.addSprite(this.game, this.game.world, 0, 0, "star");
             this.addComponent(new KeyboardInput(this, game));
-            this.addComponent(new CharacterMovement(this, game));
-            this.addComponent(new SpriteComponent(this, 'star', game));
+            this.addComponent(new CharacterMovement(this, game, this.sprite));
+
         }
     }
 }

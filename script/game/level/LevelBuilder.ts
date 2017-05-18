@@ -15,7 +15,9 @@ module Climber {
 
             //map.addTilesetImage('tiles', 'tilesheet');
 
-            level.size.set(map.width, map.height);
+            level.sizeInPixels.set(map.widthInPixels, map.heightInPixels);
+            
+            level.sizeInTiles.set(map.width, map.height);
 
             let objectLayer = map.objects['Objects'];
             level.startPosition.set(objectLayer[0].x, objectLayer[0].y);

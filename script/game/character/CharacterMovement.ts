@@ -2,7 +2,7 @@ module Climber {
     export class CharacterMovement extends Core.Component {
         private position: Phaser.Point;
 
-        constructor(gameObject: Core.Entity, game: Phaser.Game) {
+        constructor(gameObject: Core.Entity, game: Phaser.Game, sprite: Phaser.Sprite) {
             super(gameObject);
             this.position = new Phaser.Point(0, 0);
         }

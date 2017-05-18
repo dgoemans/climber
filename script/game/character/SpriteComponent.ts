@@ -1,7 +1,7 @@
 module Climber {
     export class SpriteComponent extends Core.Component {
         public game: Phaser.Game;
-        private actorSprite: Phaser.Sprite;
+        public actorSprite: Phaser.Sprite;
         public position: Phaser.Point;
 
         constructor(gameObject: Core.Entity, type: string, game: Phaser.Game) {
