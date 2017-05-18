@@ -26,7 +26,7 @@ module Core {
         }
 
         public getComponent(type: any): any{
-            
+
             for(let component of this.components) {
                 if(component instanceof type)
                 {
