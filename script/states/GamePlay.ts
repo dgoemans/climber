@@ -5,9 +5,7 @@ module Climber {
         
         private levelBuilder: LevelBuilder;
         
-        private character: Character;
-
-        private character2: Core.Entity;
+        private character: Core.Entity;
 
         private entityFactory: Core.EntityFactory;
 
@@ -22,9 +20,7 @@ module Climber {
 
             this.entityFactory = new Core.EntityFactory();
 
-            this.character2 = this.entityFactory.createEntity(this.game, this.game.cache.getJSON('playerCharacterConfig'));            
-
-            this.character = new Character(this.game);
+            this.character = this.entityFactory.createEntity(this.game, this.game.cache.getJSON('playerCharacterConfig'));            
 
         }
 
@@ -33,10 +29,7 @@ module Climber {
 
             this.game.world.resize(level.sizeInPixels.x, level.sizeInPixels.y);
 
-            this.character.sendMessage("updatePosition", level.startPosition);
-
-            //this.game.camera.follow(this.character.sprite);
-
+            this.game.camera.follow(this.character.getSprite());
             
             level.tiles.forEach(tile => {
 
@@ -48,7 +41,6 @@ module Climber {
 
         public update(): void {
             this.character.update();
-            this.character2.update();
         }
 
         public render() {

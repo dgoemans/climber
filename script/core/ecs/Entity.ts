@@ -54,7 +54,7 @@ module Core {
 
             if(config.sprite !== undefined)
             {
-                this.addSprite(game, game.world, config.x, config.y, config.type);
+                this.addSprite(game, game.world, config.sprite.x, config.sprite.y, config.sprite.type);
             }
 
             if(config.components !== undefined)
