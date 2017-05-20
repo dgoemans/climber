@@ -6,6 +6,8 @@ module Climber {
         private character: Character;
         private entityFactory: Core.EntityFactory;
 
+        private character: Character;
+
         constructor() {
             super();
         }
@@ -41,6 +43,7 @@ module Climber {
         }
 
         public update(): void {
+            this.character.update();
         }
 
         public render() {

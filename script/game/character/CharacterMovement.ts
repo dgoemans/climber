@@ -1,10 +1,18 @@
 module Climber {
+    enum Direction {
+        Left = 1 ,
+        Right,
+        None
+    }
     export class CharacterMovement extends Core.Component {
         private position: Phaser.Point;
+        protected sprite: Phaser.Sprite;
+        private direction: number;
 
         constructor(gameObject: Core.Entity, game: Phaser.Game, sprite: Phaser.Sprite) {
             super(gameObject);
-            this.position = new Phaser.Point(0, 0);
+            this.position = new Phaser.Point(100, 100);
+            this.sprite = sprite;
         }
 
         private jump(first: string, second: string): void {
@@ -13,6 +21,7 @@ module Climber {
 
         private left(): void {
             console.log("Left received");
+            this.direction = Direction.Left;
             // position.x -= 4;
             this.position.x -= 5;
             this.gameObject.sendMessage("updatePosition", this.position);
@@ -20,8 +29,28 @@ module Climber {
 
         private right(): void {
             console.log("Right received");
+            this.direction = Direction.Right;
             this.position.x += 5;
             this.gameObject.sendMessage("updatePosition", this.position);
+        }
+
+        private stop(): void {
+            console.log("stop received");
+            this.direction = Direction.None;
+        }
+
+        public update(): void {
+            if(this.direction === Direction.Left){
+                this.sprite.body.velocity.x = -200;
+            }
+
+            if(this.direction === Direction.Right){
+                this.sprite.body.velocity.x = 200;
+            }
+
+            if(this.direction === Direction.None){
+                this.sprite.body.velocity.x = 0;
+            }
         }
     }
 }
