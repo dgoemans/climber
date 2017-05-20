@@ -68,7 +68,7 @@ module Climber {
                 this.entities.forEach(entity2 => {
                     if(entity1.getComponent(PhysicsComponent) != null && entity2.getComponent(PhysicsComponent) != null)
                     {
-                        this.game.physics.arcade.collide(entity1.getSprite(), entity2.getSprite());
+                        this.game.physics.arcade.collide(entity1.getSprite(), entity2.getSprite(), this.entityCollision, null, this);
                     }
                 });
                 
@@ -76,6 +76,26 @@ module Climber {
 
             this.game.physics.arcade.collide(this.character.getSprite(), this.level.bricks, this.playerWorldCollision, null, this);
             this.game.physics.arcade.collide(this.npCharacter.getSprite(), this.level.bricks);            
+        }
+
+        public entityCollision(sprite1: Phaser.Sprite, sprite2: Phaser.Sprite): void {
+            let entity1 = null;
+            this.entities.forEach(entity => {
+                if(entity.getSprite() === sprite1)
+                {
+                    entity1 = entity;
+                }
+            });
+            let entity2 = null;
+            this.entities.forEach(entity => {
+                if(entity.getSprite() === sprite2)
+                {
+                    entity2 = entity;
+                }
+            });
+
+            entity1.sendMessage("collisionWithEntity", entity2);
+
         }
 
         public playerWorldCollision(player: Phaser.Sprite, tile: Phaser.Tile): void {
@@ -94,7 +114,7 @@ module Climber {
                 this.level.bricks.dirty = true;
             }
         }
-        
+
         public render() {
         }
 

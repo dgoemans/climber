@@ -25,6 +25,11 @@
         "module": "Climber",
         "type": "Gravity",
         "args": [0, 300]
+    },
+    {
+        "module": "Climber",
+        "type": "CollisionHandler",
+        "args": []
     }
   ]
 }
