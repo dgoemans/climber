@@ -12,7 +12,7 @@ module Climber {
         public init():void {
             this.game.stage.backgroundColor = '#ffffff';
 
-            this.game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
+            this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
             this.game.scale.pageAlignHorizontally = true;
 
             this.loadStates = [];
@@ -27,8 +27,7 @@ module Climber {
         }
 
         public preload():void {
-            this.loadNextState();
-            
+            this.loadNextState();            
         }
 
         private loadNextState(): void{            

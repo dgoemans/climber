@@ -11,16 +11,27 @@ module Climber {
         public buildLevel(name: string): Level{
             
             let level = new Level();
-            level.map = this.game.add.tilemap('test_1');
+            let map = this.game.add.tilemap('test_1');
 
-            level.map.addTilesetImage('tiles', 'tilesheet');
+            //map.addTilesetImage('tiles', 'tilesheet');
 
-            let backgroundlayer = level.map.createLayer('Bricks');
+            level.sizeInPixels.set(map.widthInPixels, map.heightInPixels);
+            
+            level.sizeInTiles.set(map.width, map.height);
 
-            let objectLayer = level.map.objects['Objects'];
+            let objectLayer = map.objects['Objects'];
+            level.startPosition.set(objectLayer[0].x, objectLayer[0].y);
 
-            level.startPosition.x = objectLayer[0].x;
-            level.startPosition.y = objectLayer[0].y;
+            map.layers[0].data.forEach(element => {
+
+                element.forEach(tile => {
+                    if(tile.index !== -1)
+                    {
+                        level.tiles.push(tile);
+                    }
+                });
+                
+            });
 
             return level;
         }

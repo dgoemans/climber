@@ -16,3 +16,5 @@ Desktop.ini
 .idea
 *.tmp.txt
 _build
+
+tsconfig.json
