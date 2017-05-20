@@ -3,8 +3,6 @@ module Climber {
         
         public game: Phaser.Game;
 
-        private entities: Array<Core.Entity>;
-        
         private levelBuilder: LevelBuilder;
         
         private character: Core.Entity;
@@ -13,6 +11,8 @@ module Climber {
         private entityFactory: Core.EntityFactory;
 
         private level: Level;
+
+        private systemHandler: Core.SystemHandler;
 
         constructor() {
             super();
@@ -23,14 +23,13 @@ module Climber {
 
             this.levelBuilder = new LevelBuilder(this.game);
 
-            this.entities = [];
             this.entityFactory = new Core.EntityFactory();
+
+            this.systemHandler = Core.SystemHandler.getInstance();
+            this.systemHandler.register(new CollisionDispatcher(this.game));
 
             this.character = this.entityFactory.createEntity(this.game, this.game.cache.getJSON('playerCharacterConfig'));            
             this.npCharacter = this.entityFactory.createEntity(this.game, this.game.cache.getJSON('AICharacterConfig'));
-
-            this.entities.push(this.character);
-            this.entities.push(this.npCharacter);
 
             // this.npCharacter.getSprite().body.onCollide = new Phaser.Signal();
             // this.npCharacter.getSprite().body.onCollide.add(this.collision, this);
@@ -52,6 +51,8 @@ module Climber {
         public preload():void {
             this.level = this.levelBuilder.buildLevel("test_1");
 
+            this.systemHandler.getSystem(CollisionDispatcher).registerLevel(this.level);
+
             this.game.camera.follow(this.character.getSprite());
 
             this.character.getSprite().position.copyFrom(this.level.startPosition);
@@ -60,60 +61,12 @@ module Climber {
         }
 
         public update(): void {
-            this.entities.forEach(entity => {
-                entity.update();
-            });
-
-            this.entities.forEach(entity1 => {
-                this.entities.forEach(entity2 => {
-                    if(entity1.getComponent(PhysicsComponent) != null && entity2.getComponent(PhysicsComponent) != null)
-                    {
-                        this.game.physics.arcade.collide(entity1.getSprite(), entity2.getSprite(), this.entityCollision, null, this);
-                    }
-                });
-                
-            });
-
-            this.game.physics.arcade.collide(this.character.getSprite(), this.level.bricks, this.playerWorldCollision, null, this);
-            this.game.physics.arcade.collide(this.npCharacter.getSprite(), this.level.bricks);            
+            this.systemHandler.update();
+            this.character.update();
+            this.npCharacter.update();
         }
 
-        public entityCollision(sprite1: Phaser.Sprite, sprite2: Phaser.Sprite): void {
-            let entity1 = null;
-            this.entities.forEach(entity => {
-                if(entity.getSprite() === sprite1)
-                {
-                    entity1 = entity;
-                }
-            });
-            let entity2 = null;
-            this.entities.forEach(entity => {
-                if(entity.getSprite() === sprite2)
-                {
-                    entity2 = entity;
-                }
-            });
-
-            entity1.sendMessage("collisionWithEntity", entity2);
-
-        }
-
-        public playerWorldCollision(player: Phaser.Sprite, tile: Phaser.Tile): void {
-
-            if(tile.properties.unbreakable)
-            {
-
-            }
-            else
-            {
-                tile.alpha = 0;
-                tile.collideDown = false;
-                tile.collideUp = false;
-                tile.collideLeft = false;
-                tile.collideRight = false;
-                this.level.bricks.dirty = true;
-            }
-        }
+        
 
         public render() {
         }

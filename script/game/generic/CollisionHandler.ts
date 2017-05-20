@@ -4,13 +4,29 @@ module Climber {
         constructor(gameObject: Core.Entity) {
             super(gameObject);            
 
-            // TODO:
-            //let system = getSystem("CollisionSystem");
-            //system.register(gameObject);
+            let collisionSystem = Core.SystemHandler.getInstance().getSystem(CollisionDispatcher);
+            collisionSystem.registerEntity(gameObject);
         }
 
         private collisionWithEntity(other: Core.Entity): void {
             console.log("Collided with entity: ", other);
+        }
+
+        private collisionWithTile(tile: Phaser.Tile): void {
+            if(tile.properties.unbreakable)
+            {
+
+            }
+            else
+            {
+                tile.alpha = 0;
+                tile.collideDown = false;
+                tile.collideUp = false;
+                tile.collideLeft = false;
+                tile.collideRight = false;
+                tile.layer.dirty = true;
+            }
+
         }
     }
 }
