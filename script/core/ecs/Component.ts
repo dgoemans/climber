@@ -16,5 +16,9 @@ module Core {
             }            
         }
 
+        public update(): void {
+            
+        }
+
     }
 }

@@ -36,5 +36,11 @@ module Core {
 
             return null;
         }
+
+        public update():void{
+            this.components.forEach(component => {
+                component.update();
+            });
+        }
     }
 }
