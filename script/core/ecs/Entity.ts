@@ -70,7 +70,7 @@ module Core {
 
                     if(componentConfig.args !== undefined)
                     {
-                        constructionArgs.concat(componentConfig.args);
+                        constructionArgs = constructionArgs.concat(componentConfig.args);
                     }
 
                     let component = new (Function.prototype.bind.apply(window[componentConfig.module][componentConfig.type], constructionArgs));

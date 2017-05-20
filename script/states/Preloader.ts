@@ -2,6 +2,7 @@ module Climber {
     export class Preloader extends Phaser.State {
         public loadingText:Phaser.Text;
         public game: Phaser.Game;
+        private waiting: boolean;
 
         private loadStates: Core.LoadState[];
 
@@ -15,20 +16,26 @@ module Climber {
             this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
             this.game.scale.pageAlignHorizontally = true;
 
+            this.waiting = false;
+
             this.loadStates = [];
             
             this.loadStates.push(new ImageLoader(this.game));
-            this.loadStates.push(new EntityLoader(this.game));
             this.loadStates.push(new LevelLoader(this.game));
+            this.loadStates.push(new EntityLoader(this.game));
+            
             
             this.loadingText = this.game.add.text(32, 32, 'Click to start load', {fill: '#ffffff'});
 
             this.physics.startSystem(Phaser.Physics.ARCADE);
-            //this.game.physics.arcade.gravity.y = 300;
         }
 
         public preload():void {
-            this.loadNextState();            
+            this.waiting = true;
+        }
+
+        private loadDone(): void {
+            this.waiting = true;
         }
 
         private loadNextState(): void{            
@@ -38,8 +45,16 @@ module Climber {
             else
             {
                 let state = this.loadStates.shift();
-                state.onLoad.addOnce(this.loadNextState, this);
+                state.onLoad.addOnce(this.loadDone, this);
                 state.start();
+            }
+        }
+
+
+        public update(): void{
+            if(this.waiting){
+                this.loadNextState();
+                this.waiting = false;
             }
         }
     }

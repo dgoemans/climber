@@ -9,6 +9,8 @@ module Climber {
             
             this.game.load.json('playerCharacterConfig', 'assets/entities/playerCharacter.json');
 
+            this.game.load.json('brickConfig', 'assets/entities/brick.json');
+
             super.start();
         }
     }

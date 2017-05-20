@@ -30,11 +30,14 @@ module Climber {
             this.game.world.resize(level.sizeInPixels.x, level.sizeInPixels.y);
 
             this.game.camera.follow(this.character.getSprite());
+
+            this.character.getSprite().position.copyFrom(level.startPosition)
             
             level.tiles.forEach(tile => {
 
-                let brick = new Brick(this.game, tile);
-                brick.sendMessage("updatePosition", new Phaser.Point(tile.x * tile.width, tile.y * tile.height));
+                let brick = this.entityFactory.createEntity(this.game, this.game.cache.getJSON('brickConfig'));            
+
+                brick.getSprite().position.set(tile.x * tile.width, tile.y * tile.height);
                 
             });
         }
