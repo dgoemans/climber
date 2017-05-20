@@ -15,10 +15,6 @@ module Climber {
             this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
             this.sprite.body.collideWorldBounds = true;
             this.sprite.body.immovable = isImmovable;
-
-            if(isImmovable){
-                this.sprite.body.bounce.set(1, 1);
-            }
         }
     }
 }

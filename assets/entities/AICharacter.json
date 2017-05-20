@@ -15,6 +15,11 @@
       "module": "Climber",
       "type": "CharacterMovement",
       "args": [2, -200]
+    },
+    {
+        "module": "Climber",
+        "type": "Gravity",
+        "args": [0, 300]
     }
   ]
 }

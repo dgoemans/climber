@@ -16,7 +16,7 @@ module Climber {
 
             level.tileMap.addTilesetImage('tiles', 'tilesheet');
 
-            level.background = level.tileMap.createLayer('Background');
+            //level.background = level.tileMap.createLayer('Background');
 
             level.bricks = level.tileMap.createLayer('Bricks');
 
@@ -27,6 +27,8 @@ module Climber {
             let objectLayer = level.tileMap.objects['Objects'];
 
             level.startPosition.set(objectLayer[0].x, objectLayer[0].y);
+
+            level.aiSpawns.push(new Phaser.Point(objectLayer[1].x, objectLayer[1].y));
 
             return level;
         }

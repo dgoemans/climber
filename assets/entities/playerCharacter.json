@@ -20,6 +20,11 @@
             "module": "Climber",
             "type": "CharacterMovement",
             "args": [3, 0]
+        },
+        {
+            "module": "Climber",
+            "type": "Gravity",
+            "args": [0, 300]
         }
     ]
 }
