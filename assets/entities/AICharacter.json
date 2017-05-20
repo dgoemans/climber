@@ -8,6 +8,11 @@
   "components": [
     {
       "module": "Climber",
+      "type": "AIInput",
+      "args": []
+    },
+    {
+      "module": "Climber",
       "type": "PhysicsComponent",
       "args": [true]
     },
