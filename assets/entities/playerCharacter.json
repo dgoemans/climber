@@ -10,6 +10,16 @@
             "module": "Climber",
             "type": "KeyboardInput",
             "args": []
+        },
+        {
+            "module": "Climber",
+            "type": "PhysicsComponent",
+            "args": [false]
+        },
+        {
+            "module": "Climber",
+            "type": "CharacterMovement",
+            "args": []
         }
     ]
 }

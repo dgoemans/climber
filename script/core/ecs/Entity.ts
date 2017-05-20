@@ -21,6 +21,10 @@ module Core {
             this.components.push(component);
         }
 
+        public getSprite() : Phaser.Sprite {
+            return this.sprite;
+        }
+
         public sendMessage(...args: any[]) : void {
             this.components.forEach(component => {
                 component.sendMessage.apply(component, args);
@@ -58,6 +62,8 @@ module Core {
                 config.components.forEach(componentConfig => {
                     let constructionArgs = [];
                     
+                    constructionArgs.push(null);
+
                     constructionArgs.push(this);
                     
                     constructionArgs.push(game);
@@ -67,7 +73,7 @@ module Core {
                         constructionArgs.concat(componentConfig.args);
                     }
 
-                    let component = Function.prototype.bind.apply(window[componentConfig.module][componentConfig.type], constructionArgs);
+                    let component = new (Function.prototype.bind.apply(window[componentConfig.module][componentConfig.type], constructionArgs));
                     
                     this.addComponent(component);
                 });

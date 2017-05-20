@@ -9,10 +9,10 @@ module Climber {
         protected sprite: Phaser.Sprite;
         private direction: number;
 
-        constructor(gameObject: Core.Entity, game: Phaser.Game, sprite: Phaser.Sprite) {
+        constructor(gameObject: Core.Entity, game: Phaser.Game) {
             super(gameObject);
             this.position = new Phaser.Point(100, 100);
-            this.sprite = sprite;
+            this.sprite = gameObject.getSprite();
         }
 
         private jump(first: string, second: string): void {

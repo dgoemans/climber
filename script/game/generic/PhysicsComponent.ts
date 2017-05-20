@@ -3,10 +3,10 @@ module Climber {
         public game: Phaser.Game;
         protected sprite: Phaser.Sprite;
 
-        constructor(gameObject: Core.Entity, game: Phaser.Game, sprite: Phaser.Sprite, isImmovable: boolean) {
+        constructor(gameObject: Core.Entity, game: Phaser.Game, isImmovable: boolean) {
             super(gameObject);
             this.game = game;
-            this.sprite = sprite;
+            this.sprite = gameObject.getSprite();
             this.enablePhysics(isImmovable)
         }
 

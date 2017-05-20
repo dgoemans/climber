@@ -7,9 +7,9 @@ module Climber {
             this.game = game;
 
             this.addSprite(this.game, this.game.world, 100, 100, "star");
-            this.addComponent(new PhysicsComponent(this, game, this.sprite, false));
+            this.addComponent(new PhysicsComponent(this, game, false));
             this.addComponent(new KeyboardInput(this, game));
-            this.addComponent(new CharacterMovement(this, game, this.sprite));
+            this.addComponent(new CharacterMovement(this, game));
 
         }
     }

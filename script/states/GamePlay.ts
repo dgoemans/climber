@@ -2,11 +2,14 @@ module Climber {
     export class GamePlay extends Phaser.State {
         
         public game: Phaser.Game;
+        
         private levelBuilder: LevelBuilder;
+        
         private character: Character;
-        private entityFactory: Core.EntityFactory;
 
-        private character: Character;
+        private character2: Core.Entity;
+
+        private entityFactory: Core.EntityFactory;
 
         constructor() {
             super();
@@ -14,11 +17,12 @@ module Climber {
 
         public init():void {
             this.game.stage.backgroundColor = '#bab397';
+
             this.levelBuilder = new LevelBuilder(this.game);
 
             this.entityFactory = new Core.EntityFactory();
 
-            let character2 = this.entityFactory.createEntity(this.game, this.game.cache.getJSON('playerCharacterConfig'));            
+            this.character2 = this.entityFactory.createEntity(this.game, this.game.cache.getJSON('playerCharacterConfig'));            
 
             this.character = new Character(this.game);
 
@@ -44,6 +48,7 @@ module Climber {
 
         public update(): void {
             this.character.update();
+            this.character2.update();
         }
 
         public render() {
