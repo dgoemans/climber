@@ -6,13 +6,13 @@ module Climber {
         }
 
         private onLeftHit(): void {
-            console.log("LEFT Pressed");
-            this.gameObject.sendMessage("left");
+            console.log("LEFT HIt");
+            this.gameObject.sendMessage("right");
         }
 
         private onRightHit(): void {
-            console.log("Right Pressed");
-            this.gameObject.sendMessage("right");
+            console.log("Right HIt");
+            this.gameObject.sendMessage("left");
         }
     }
 }

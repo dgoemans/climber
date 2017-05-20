@@ -31,7 +31,23 @@ module Climber {
 
             this.entities.push(this.character);
             this.entities.push(this.npCharacter);
+
+            // this.npCharacter.getSprite().body.onCollide = new Phaser.Signal();
+            // this.npCharacter.getSprite().body.onCollide.add(this.collision, this);
         }
+
+       /* public collision(sprite1: Phaser.Sprite, sprite2: Phaser.Sprite): void {
+            sprite1.visible = !sprite1.visible;
+            if(sprite1.key === 'star' && sprite1.body.wasTouching.left){
+                this.npCharacter.sendMessage('onLeftHit');
+                console.log(sprite1.body.wasTouching.left, sprite1.body.wasTouching.right);
+                console.log('bpdy2', sprite2.body.wasTouching.left, sprite2.body.wasTouching.right);
+            }
+
+            if(sprite1.key === 'star' && sprite1.body.wasTouching.right){
+                this.npCharacter.sendMessage('onRightHit');
+            }
+        }*/
 
         public preload():void {
             this.level = this.levelBuilder.buildLevel("test_1");
@@ -77,9 +93,8 @@ module Climber {
                 tile.collideRight = false;
                 this.level.bricks.dirty = true;
             }
-            
         }
-
+        
         public render() {
         }
 
