@@ -1,0 +1,15 @@
+{
+    "name": "Climber.PlayerCharacter",
+    "sprite": {
+        "x": 0,
+        "y": 0,
+        "type": "star"
+    },
+    "components": [
+        {
+            "module": "Climber",
+            "type": "KeyboardInput",
+            "args": []
+        }
+    ]
+}

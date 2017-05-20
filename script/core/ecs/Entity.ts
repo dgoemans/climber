@@ -5,6 +5,8 @@ module Core {
 
         protected sprite: Phaser.Sprite;
 
+        public name: string;
+
         constructor() {
             this.components = [];
         }
@@ -41,6 +43,35 @@ module Core {
             this.components.forEach(component => {
                 component.update();
             });
+        }
+
+        public configure(game: Phaser.Game, config: any): void {
+            this.name = config.name;
+
+            if(config.sprite !== undefined)
+            {
+                this.addSprite(game, game.world, config.x, config.y, config.type);
+            }
+
+            if(config.components !== undefined)
+            {
+                config.components.forEach(componentConfig => {
+                    let constructionArgs = [];
+                    
+                    constructionArgs.push(this);
+                    
+                    constructionArgs.push(game);
+
+                    if(componentConfig.args !== undefined)
+                    {
+                        constructionArgs.concat(componentConfig.args);
+                    }
+
+                    let component = Function.prototype.bind.apply(window[componentConfig.module][componentConfig.type], constructionArgs);
+                    
+                    this.addComponent(component);
+                });
+            }
         }
     }
 }
