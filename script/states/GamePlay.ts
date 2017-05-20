@@ -5,6 +5,8 @@ module Climber {
         private levelBuilder: LevelBuilder;
         private character: Character;
 
+        private character: Character;
+
         constructor() {
             super();
         }
@@ -37,6 +39,7 @@ module Climber {
         }
 
         public update(): void {
+            this.character.update();
         }
 
         public render() {

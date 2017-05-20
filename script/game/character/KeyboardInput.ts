@@ -9,9 +9,11 @@ module Climber {
 
             let keyLeft = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
             keyLeft.onDown.add(this.onLeftPressed, this);
+            keyLeft.onUp.add(this.onKeyReleased, this);
 
             let keyRight = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
             keyRight.onDown.add(this.onRightPressed, this);
+            keyRight.onUp.add(this.onKeyReleased, this);
         }
 
         private onUpPressed(): void {
@@ -27,6 +29,11 @@ module Climber {
         private onRightPressed(): void {
             console.log("Right Pressed");
             this.gameObject.sendMessage("right");
+        }
+
+        private onKeyReleased(): void {
+            console.log("onKeyReleased");
+            this.gameObject.sendMessage("stop");
         }
     }
 }
