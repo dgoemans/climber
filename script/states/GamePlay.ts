@@ -9,6 +9,8 @@ module Climber {
 
         private entityFactory: Core.EntityFactory;
 
+        private level: Level;
+
         constructor() {
             super();
         }
@@ -25,25 +27,21 @@ module Climber {
         }
 
         public preload():void {
-            let level = this.levelBuilder.buildLevel("test_1");
-
-            this.game.world.resize(level.sizeInPixels.x, level.sizeInPixels.y);
+            this.level = this.levelBuilder.buildLevel("test_1");
 
             this.game.camera.follow(this.character.getSprite());
 
-            this.character.getSprite().position.copyFrom(level.startPosition)
-            
-            level.tiles.forEach(tile => {
-
-                let brick = this.entityFactory.createEntity(this.game, this.game.cache.getJSON('brickConfig'));            
-
-                brick.getSprite().position.set(tile.x * tile.width, tile.y * tile.height);
-                
-            });
+            this.character.getSprite().position.copyFrom(this.level.startPosition);
         }
 
         public update(): void {
             this.character.update();
+
+            this.game.physics.arcade.collide(this.character.getSprite(), this.level.bricks, this.playerWorldCollision, null, this);
+        }
+
+        public playerWorldCollision(): void {
+            
         }
 
         public render() {

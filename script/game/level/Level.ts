@@ -1,19 +1,15 @@
 module Climber {
     export class Level {
 
-        public startPosition: Phaser.Point;
+        public startPosition = new Phaser.Point();
 
-        public sizeInPixels: Phaser.Point;
-        
-        public sizeInTiles: Phaser.Point;
+        public tileMap: Phaser.Tilemap;
 
-        public tiles: Phaser.Tile[];
+        public bricks: Phaser.TilemapLayer;
+
+        public background: Phaser.TilemapLayer;
 
         constructor() {
-            this.startPosition = new Phaser.Point();
-            this.sizeInPixels = new Phaser.Point();
-            this.sizeInTiles = new Phaser.Point();
-            this.tiles = new Array();
         }
 
     }
