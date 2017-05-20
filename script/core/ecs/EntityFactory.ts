@@ -1,32 +1,15 @@
 module Core {
     export class EntityFactory {
 
-        /*
-        Sample JSON for an entity
-{
-    "name": "Climber.Character",
-    "sprite": {
-        "x": 0,
-        "y": 0,
-        "type": "star"
-    }
-    "components": [
-        {
-            "module": "Climber",
-            "type": "KeyboardInput",
-            "args": []
-    ]
-}
+        injector: Injector;
 
-        */
-
-        constructor() {
-            
+        constructor(injector: Injector) {
+            this.injector = injector;
         }
 
 
         public createEntity(game: Phaser.Game, config: any) : Entity {
-            let entity = new Entity();
+            let entity = new Entity(this.injector);
 
             entity.configure(game, config);
 

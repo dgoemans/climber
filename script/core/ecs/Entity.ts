@@ -7,8 +7,11 @@ module Core {
 
         public name: string;
 
-        constructor() {
+        private injector: Core.Injector;
+
+        constructor(injector) {
             this.components = [];
+            this.injector = injector;
         }
 
         protected addSprite(game: Phaser.Game, parent: Phaser.Group, x: number, y: number, type: string ): void {
@@ -66,14 +69,25 @@ module Core {
 
                     constructionArgs.push(this);
                     
-                    constructionArgs.push(game);
+                    let objectConstructor = window[componentConfig.module][componentConfig.type];
+
+                    let resolvedArgs = Helpers.getArgs(objectConstructor);
+
+                    for(let argument of resolvedArgs) {
+                        if(this.injector.has(argument)){
+                            constructionArgs.push(this.injector.resolve(argument));
+                        }
+                    }
+
+                    console.log("Args: ", resolvedArgs);
 
                     if(componentConfig.args !== undefined)
                     {
                         constructionArgs = constructionArgs.concat(componentConfig.args);
                     }
 
-                    let component = new (Function.prototype.bind.apply(window[componentConfig.module][componentConfig.type], constructionArgs));
+
+                    let component = new (Function.prototype.bind.apply(objectConstructor, constructionArgs));
                     
                     this.addComponent(component);
                 });

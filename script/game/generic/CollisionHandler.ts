@@ -1,11 +1,10 @@
 module Climber {
     export class CollisionHandler extends Core.Component {
 
-        constructor(gameObject: Core.Entity) {
+        constructor(gameObject: Core.Entity, collisionDispatcher: CollisionDispatcher) {
             super(gameObject);            
 
-            let collisionSystem = Core.SystemHandler.getInstance().getSystem(CollisionDispatcher);
-            collisionSystem.registerEntity(gameObject);
+            collisionDispatcher.registerEntity(gameObject);
         }
 
         private collisionWithEntity(other: Core.Entity): void {

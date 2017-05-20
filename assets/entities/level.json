@@ -1,0 +1,9 @@
+{
+    "name": "Climber.Level",
+    "components": [
+        {
+            "module": "Climber",
+            "type": "LevelBuilder"
+        }
+    ]
+}
