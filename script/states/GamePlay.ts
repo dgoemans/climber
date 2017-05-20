@@ -6,6 +6,7 @@ module Climber {
         private levelBuilder: LevelBuilder;
         
         private character: Core.Entity;
+        private npCharacter: Core.Entity;
 
         private entityFactory: Core.EntityFactory;
 
@@ -21,6 +22,9 @@ module Climber {
             this.entityFactory = new Core.EntityFactory();
 
             this.character = this.entityFactory.createEntity(this.game, this.game.cache.getJSON('playerCharacterConfig'));            
+            this.npCharacter = this.entityFactory.createEntity(this.game, this.game.cache.getJSON('AICharacterConfig'));
+
+            this.game.physics.arcade.collide(this.character, this.npCharacter);
 
         }
 
@@ -31,7 +35,7 @@ module Climber {
 
             this.game.camera.follow(this.character.getSprite());
 
-            this.character.getSprite().position.copyFrom(level.startPosition)
+            // this.character.getSprite().position.copyFrom(level.startPosition);
             
             level.tiles.forEach(tile => {
 
