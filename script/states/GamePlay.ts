@@ -1,7 +1,4 @@
 module Climber {
-    interface Updateable {
-        update: Function;
-    }
 
     export class GamePlay extends Phaser.State {
         
@@ -13,7 +10,7 @@ module Climber {
 
         private systemHandler: Core.SystemHandler;
 
-        private updateList: Array<Updateable>;
+        private updateList: Array<Core.Updateable>;
 
         constructor() {
             super();

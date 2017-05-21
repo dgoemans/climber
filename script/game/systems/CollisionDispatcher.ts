@@ -1,5 +1,5 @@
 module Climber {
-    export class CollisionDispatcher extends Core.System {
+    export class CollisionDispatcher extends Core.System implements Core.Updateable {
 
         private entities: Array<Core.Entity>;
         private game: Phaser.Game;

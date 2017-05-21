@@ -1,6 +1,6 @@
 ///<reference path='Component.ts' />
 module Core {
-    export class Entity {
+    export class Entity implements Core.Updateable {
 
         private components: Component[];
 
