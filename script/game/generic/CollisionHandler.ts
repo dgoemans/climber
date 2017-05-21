@@ -1,10 +1,14 @@
 module Climber {
     export class CollisionHandler extends Core.Component {
 
+        collisionDispatcher: CollisionDispatcher;
+
         constructor(gameObject: Core.Entity, collisionDispatcher: CollisionDispatcher) {
             super(gameObject);            
 
-            collisionDispatcher.registerEntity(gameObject);
+            this.collisionDispatcher = collisionDispatcher;
+
+            this.collisionDispatcher.registerEntity(gameObject);
         }
 
         private collisionWithEntity(other: Core.Entity): void {
@@ -26,6 +30,10 @@ module Climber {
                 tile.layer.dirty = true;
             }
 
+        }
+
+        public destroy() : void {
+            this.collisionDispatcher.deregisterEntity(this.gameObject);
         }
     }
 }

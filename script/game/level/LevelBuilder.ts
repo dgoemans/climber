@@ -7,6 +7,8 @@ module Climber {
         private collisionDispatcher: CollisionDispatcher;
         private injector: Core.Injector;
         private updateList: any;
+        private level: Level;
+        private actorList: Array<Core.Entity>;
 
         constructor(gameObject: Core.Entity, game: Phaser.Game, injector: Core.Injector, updateList: any, entityFactory: Core.EntityFactory, collisionDispatcher: CollisionDispatcher) {
             super(gameObject);
@@ -15,15 +17,15 @@ module Climber {
             this.updateList = updateList;
             this.entityFactory = entityFactory;
             this.collisionDispatcher = collisionDispatcher;
-            
+            this.actorList = [];
         }
 
         public load(name: string): void {
             let tilemap = this.game.add.tilemap(name);
 
-            let level = this.buildLevel(tilemap);
+            this.level = this.buildLevel(tilemap);
 
-            this.loadCharacters(level);
+            this.loadCharacters(this.level);
         }
 
         public buildLevel(tilemap: Phaser.Tilemap): Level {
@@ -65,6 +67,8 @@ module Climber {
 
             this.updateList.push(mainCharacter);
 
+            this.actorList.push(mainCharacter);
+
             let npCharacter = this.entityFactory.createEntity(this.game, this.game.cache.getJSON('AICharacterConfig'));
 
             npCharacter.getSprite().position.copyFrom(level.aiSpawns[0]);
@@ -72,6 +76,34 @@ module Climber {
             this.injector.register("npCharacter", npCharacter);
 
             this.updateList.push(npCharacter);
+
+            this.actorList.push(npCharacter);
+        }
+
+        public unload(): void {
+            
+            Helpers.removeItem(this.updateList, this.injector.resolve("mainCharacter"));
+
+            Helpers.removeItem(this.updateList, this.injector.resolve("npCharacter"));
+
+            this.collisionDispatcher.deregisterLevel(this.level);
+
+            this.injector.deregister("mainCharacter");
+
+            this.injector.deregister("npCharacter");
+
+            this.actorList.forEach(actor => {
+                if(actor.getSprite() !== null)
+                {
+                    actor.sendMessage("destroy");
+                }
+
+                actor.getSprite().destroy();
+            });
+
+            this.level.bricks.destroy();
+
+            this.level.tileMap.destroy();
         }
     }
 }
