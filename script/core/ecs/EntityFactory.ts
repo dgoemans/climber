@@ -9,7 +9,7 @@ module Core {
 
 
         public createEntity(game: Phaser.Game, config: any) : Entity {
-            let entity = new Entity(this.injector);
+            let entity = this.injector.resolve("Entity") as Entity;
 
             entity.configure(game, config);
 

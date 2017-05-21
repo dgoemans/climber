@@ -1,3 +1,4 @@
+///<reference path='Component.ts' />
 module Core {
     export class Entity {
 
@@ -64,12 +65,13 @@ module Core {
             {
                 config.components.forEach(componentConfig => {
                     let constructionArgs = [];
-                    
+
+                    // This setup is too similar to what the injector does, but we have to manually register all components
+                    let objectConstructor = window[componentConfig.module][componentConfig.type];
+
                     constructionArgs.push(null);
 
                     constructionArgs.push(this);
-                    
-                    let objectConstructor = window[componentConfig.module][componentConfig.type];
 
                     let resolvedArgs = Helpers.getArgs(objectConstructor);
 
@@ -79,8 +81,6 @@ module Core {
                         }
                     }
 
-                    console.log("Args: ", resolvedArgs);
-
                     if(componentConfig.args !== undefined)
                     {
                         constructionArgs = constructionArgs.concat(componentConfig.args);
@@ -88,7 +88,7 @@ module Core {
 
 
                     let component = new (Function.prototype.bind.apply(objectConstructor, constructionArgs));
-                    
+                
                     this.addComponent(component);
                 });
             }

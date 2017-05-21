@@ -27,6 +27,7 @@ module Climber {
             
             injector.register("game", this.game);
             injector.register("updateList", this.updateList);
+            injector.register("Entity", Core.Entity);
 
             let entityFactory = new Core.EntityFactory(injector);
             injector.register("entityFactory", entityFactory);
