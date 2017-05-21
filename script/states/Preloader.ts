@@ -14,6 +14,12 @@ module Climber {
             this.game.stage.backgroundColor = '#ffffff';
 
             this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+
+            this.scale.minWidth = 1280 / 2;
+            this.scale.minHeight = 960 / 2;
+            this.scale.maxWidth = 1280;
+            this.scale.maxHeight = 960;
+
             this.game.scale.pageAlignHorizontally = true;
             this.game.scale.pageAlignVertically = true;
 
