@@ -41,6 +41,11 @@ module Climber {
             this.direction = Direction.None;
         }
 
+        private changeDirection(direction: number): void {
+            console.log("changeDirection received");
+            this.direction = direction;
+        }
+
         public update(): void {
             if(this.direction === Direction.Left){
                 this.sprite.body.velocity.x = -200;

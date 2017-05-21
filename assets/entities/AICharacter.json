@@ -29,7 +29,7 @@
     {
         "module": "Climber",
         "type": "CollisionHandler",
-        "args": []
+        "args": [true]
     }
   ]
 }

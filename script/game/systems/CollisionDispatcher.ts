@@ -21,7 +21,6 @@ module Climber {
         }
 
         public update(): void {
-            
             this.updateEntityCollisions();
             this.updatWorldCollisions();
         }
@@ -45,6 +44,7 @@ module Climber {
         }
 
         public entityCollision(sprite1: Phaser.Sprite, sprite2: Phaser.Sprite): void {
+            console.log('entity collision');
             let entity1 = this.findEntityBySprite(sprite1);
             let entity2 = this.findEntityBySprite(sprite2);
             
