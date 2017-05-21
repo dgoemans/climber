@@ -20,6 +20,14 @@ module Climber {
             this.level = level;
         }
 
+        public deregisterEntity(entity: Core.Entity): void {
+            Helpers.removeItem(this.entities, entity);
+        }
+
+        public deregisterLevel(level: Level): void {
+            this.level = undefined;
+        }
+
         public update(): void {
             this.updateEntityCollisions();
             this.updatWorldCollisions();

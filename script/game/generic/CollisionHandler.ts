@@ -2,7 +2,10 @@ module Climber {
     export class CollisionHandler extends Core.Component {
 
         constructor(gameObject: Core.Entity, collisionDispatcher: CollisionDispatcher, checkWorldBounds: boolean) {
-            super(gameObject);            
+        collisionDispatcher: CollisionDispatcher;
+
+        constructor(gameObject: Core.Entity, collisionDispatcher: CollisionDispatcher) {
+            super(gameObject);
 
             collisionDispatcher.registerEntity(gameObject);
 
@@ -15,6 +18,9 @@ module Climber {
                 sprite.body.onWorldBounds = new Phaser.Signal();
                 sprite.body.onWorldBounds.add(this.collideWithCanvasWorld, this);
             }
+            this.collisionDispatcher = collisionDispatcher;
+
+            this.collisionDispatcher.registerEntity(gameObject);
         }
 
         private collisionWithEntity(other: Core.Entity): void {
@@ -63,6 +69,10 @@ module Climber {
                 this.gameObject.sendMessage('changeDirection', 1);
             }
 
+        }
+
+        public destroy() : void {
+            this.collisionDispatcher.deregisterEntity(this.gameObject);
         }
     }
 }

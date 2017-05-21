@@ -35,7 +35,6 @@ module Climber {
 
             this.updateList.push(collisionDispatcher);
 
-            
             this.level = entityFactory.createEntity(this.game, this.game.cache.getJSON('level'));
         }
 
