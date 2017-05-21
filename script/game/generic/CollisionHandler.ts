@@ -18,22 +18,38 @@ module Climber {
         }
 
         private collisionWithEntity(other: Core.Entity): void {
-            console.log("Collided with entity: ", other);
         }
 
         private collisionWithTile(tile: Phaser.Tile): void {
+            // if(tile.faceBottom){
+            //     console.log(tile.faceBottom);
+            //     console.log(tile);
+            // }
             if(tile.properties.unbreakable)
             {
 
             }
             else
             {
-                tile.alpha = 0;
-                tile.collideDown = false;
-                tile.collideUp = false;
-                tile.collideLeft = false;
-                tile.collideRight = false;
-                tile.layer.dirty = true;
+                if(!tile.faceTop){
+                    if(tile.faceBottom){
+                        tile.canCollide = false;
+                        console.log(tile.faceBottom);
+                        console.log(tile);
+                        tile.alpha = 0;
+                        tile.collideDown = false;
+                        tile.collideUp = false;
+                        tile.collideLeft = false;
+                        tile.collideRight = false;
+                        tile.layer.dirty = true;
+                    }
+                }
+                // tile.alpha = 0;
+                // tile.collideDown = false;
+                // tile.collideUp = false;
+                // tile.collideLeft = false;
+                // tile.collideRight = false;
+                // tile.layer.dirty = true;
             }
 
         }

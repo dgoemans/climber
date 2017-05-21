@@ -19,21 +19,17 @@ module Climber {
 
         private jump(first: string, second: string): void {
             console.log("Jump received", first, second);
+            this.sprite.body.velocity.y = -600;
         }
 
         private left(): void {
             console.log("Left received");
             this.direction = Direction.Left;
-            // position.x -= 4;
-            this.position.x -= 5;
-            this.gameObject.sendMessage("updatePosition", this.position);
         }
 
         private right(): void {
             console.log("Right received");
             this.direction = Direction.Right;
-            this.position.x += 5;
-            this.gameObject.sendMessage("updatePosition", this.position);
         }
 
         private stop(): void {

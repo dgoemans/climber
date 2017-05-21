@@ -14,6 +14,7 @@ module Climber {
             let keyRight = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
             keyRight.onDown.add(this.onRightPressed, this);
             keyRight.onUp.add(this.onKeyReleased, this);
+
         }
 
         private onUpPressed(): void {

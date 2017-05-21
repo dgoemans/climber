@@ -35,6 +35,7 @@ module Climber {
             this.loadingText = this.game.add.text(32, 32, 'Click to start load', {fill: '#ffffff'});
 
             this.physics.startSystem(Phaser.Physics.ARCADE);
+            this.game.physics.arcade.gravity.y = 300;
         }
 
         public preload():void {

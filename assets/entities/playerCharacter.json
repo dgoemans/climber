@@ -24,7 +24,7 @@
         {
             "module": "Climber",
             "type": "Gravity",
-            "args": [0, 300]
+            "args": [0, 1000, 200, 600]
         },
         {
             "module": "Climber",
