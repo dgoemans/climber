@@ -1,11 +1,9 @@
-///<reference path='System.ts' />
 module Core {
-    export class Injector extends System {
+    export class Injector {
 
         private dependencies: Object;
 
         constructor() {
-            super();
             this.dependencies = {};
 
             this.register("injector", this);

@@ -1,5 +1,5 @@
 module Core {
-    export class Component implements Core.Updateable {
+    export class Component implements Updateable {
 
         protected gameObject: Entity;
 

@@ -1,6 +1,6 @@
 ///<reference path='Component.ts' />
 module Core {
-    export class Entity implements Core.Updateable {
+    export class Entity implements Updateable {
 
         private components: Component[];
 
@@ -8,7 +8,7 @@ module Core {
 
         public name: string;
 
-        private injector: Core.Injector;
+        private injector: Injector;
 
         constructor(injector) {
             this.components = [];
