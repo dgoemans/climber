@@ -22,51 +22,26 @@ module Climber {
         }
 
         private collisionWithEntity(other: Core.Entity): void {
+            this.gameObject.sendMessage('hitEntity', other);
         }
 
         private collisionWithTile(tile: Phaser.Tile): void {
-            // if(tile.faceBottom){
-            //     console.log(tile.faceBottom);
-            //     console.log(tile);
-            // }
-            if(tile.properties.unbreakable)
+            if(this.gameObject.getSprite().body.onCeiling())
             {
-
-            }
-            else
-            {
-                if(!tile.faceTop){
-                    if(tile.faceBottom){
-                        tile.canCollide = false;
-                        console.log(tile.faceBottom);
-                        console.log(tile);
-                        tile.alpha = 0;
-                        tile.collideDown = false;
-                        tile.collideUp = false;
-                        tile.collideLeft = false;
-                        tile.collideRight = false;
-                        tile.layer.dirty = true;
-                    }
-                }
-                // tile.alpha = 0;
-                // tile.collideDown = false;
-                // tile.collideUp = false;
-                // tile.collideLeft = false;
-                // tile.collideRight = false;
-                // tile.layer.dirty = true;
+                this.gameObject.sendMessage('hitCeiling', tile);
             }
 
+            if(this.gameObject.getSprite().body.onWall())
+            {
+                this.gameObject.sendMessage('hitWall', tile);
+            }
         }
 
         private collideWithCanvasWorld(sprite: Phaser.Sprite, up: boolean, down: boolean, left: boolean, right: boolean): void {
-            console.log(up, down, left, right);
-            if(left){
-                this.gameObject.sendMessage('changeDirection', 2);
+            
+            if(left || right){
+                this.gameObject.sendMessage('hitWall', null);
             }
-            if(right){
-                this.gameObject.sendMessage('changeDirection', 1);
-            }
-
         }
 
         public destroy() : void {

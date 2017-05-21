@@ -29,7 +29,10 @@ module Climber {
 
         private onUpPressed(): void {
             console.log("UP Pressed");
-            this.gameObject.sendMessage("jump");
+            if(this.gameObject.getSprite().body.onFloor())
+            {
+                this.gameObject.sendMessage("jump");
+            }
         }
 
         private onLeftPressed(): void {

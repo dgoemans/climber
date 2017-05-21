@@ -19,7 +19,7 @@
         {
             "module": "Climber",
             "type": "CharacterMovement",
-            "args": [3, 0]
+            "args": []
         },
         {
             "module": "Climber",
@@ -30,6 +30,11 @@
             "module": "Climber",
             "type": "CollisionHandler",
             "args": [false]
+        },
+        {
+            "module": "Climber",
+            "type": "TileDamage",
+            "args": []
         }
     ]
 }

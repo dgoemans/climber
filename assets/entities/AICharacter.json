@@ -18,13 +18,13 @@
     },
     {
       "module": "Climber",
-      "type": "CharacterMovement",
-      "args": [2, -200]
+      "type": "AIMovement",
+      "args": [2]
     },
     {
         "module": "Climber",
         "type": "Gravity",
-        "args": [0, 300]
+        "args": [0, 1000]
     },
     {
         "module": "Climber",
