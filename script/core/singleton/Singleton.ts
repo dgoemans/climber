@@ -1,7 +1,7 @@
 module Core {
     export class Singleton {
 
-        private static instance = null;
+        private static instance : any = null;
 
         constructor() {
         }
