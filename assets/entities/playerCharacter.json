@@ -3,7 +3,8 @@
     "sprite": {
         "x": 100,
         "y": 150,
-        "type": "star_red"
+        "key": "alienGreen",
+        "frame": "alienGreen_stand.png"
     },
     "components": [
         {
@@ -35,6 +36,11 @@
             "module": "Climber",
             "type": "TileDamage",
             "args": []
+        },
+        {
+            "module": "Climber",
+            "type": "CharacterAnimation",
+            "args": [40,48, "alienGreen"]
         }
     ]
 }

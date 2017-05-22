@@ -24,8 +24,8 @@
                  "type":"player_spawn",
                  "visible":true,
                  "width":0,
-                 "x":267,
-                 "y":3104
+                 "x":285,
+                 "y":3092
                 }, 
                 {
                  "height":0,
@@ -64,7 +64,7 @@
         {
          "columns":4,
          "firstgid":1,
-         "image":"..\/tiles\/tiles.jpg",
+         "image":"..\/tiles\/tiles.png",
          "imageheight":128,
          "imagewidth":128,
          "margin":0,

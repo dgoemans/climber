@@ -3,7 +3,8 @@
   "sprite": {
     "x": 180,
     "y": 150,
-    "type": "star"
+    "key": "alienPink",
+    "frame": "alienPink_stand.png"
   },
   "components": [
     {
@@ -30,6 +31,11 @@
         "module": "Climber",
         "type": "CollisionHandler",
         "args": [true]
+    },
+    {
+        "module": "Climber",
+        "type": "CharacterAnimation",
+        "args": [40,48, "alienPink"]
     }
   ]
 }

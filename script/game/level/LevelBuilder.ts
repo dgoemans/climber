@@ -34,7 +34,7 @@ module Climber {
 
             level.tileMap = tilemap;
 
-            level.tileMap.addTilesetImage('tiles', 'tilesheet');
+            level.tileMap.addTilesetImage('tiles', 'tiles');
 
             //level.background = level.tileMap.createLayer('Background');
 

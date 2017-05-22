@@ -28,6 +28,7 @@ module Climber {
             this.loadStates = [];
             
             this.loadStates.push(new ImageLoader(this.game));
+            this.loadStates.push(new AtlasLoader(this.game));
             this.loadStates.push(new LevelLoader(this.game));
             this.loadStates.push(new EntityLoader(this.game));
             

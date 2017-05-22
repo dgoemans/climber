@@ -10,14 +10,14 @@ module Core {
 
         private injector: Injector;
 
-        constructor(injector) {
+        constructor(injector: Injector) {
             this.components = [];
             this.injector = injector;
         }
 
-        protected addSprite(game: Phaser.Game, parent: Phaser.Group, x: number, y: number, type: string ): void {
+        protected addSprite(game: Phaser.Game, parent: Phaser.Group, x: number, y: number, key: string, frame: string ): void {
 
-            this.sprite = new Phaser.Sprite(game, x, y, type);
+            this.sprite = new Phaser.Sprite(game, x, y, key, frame);
             parent.add(this.sprite);
         }
 
@@ -58,7 +58,7 @@ module Core {
 
             if(config.sprite !== undefined)
             {
-                this.addSprite(game, game.world, config.sprite.x, config.sprite.y, config.sprite.type);
+                this.addSprite(game, game.world, config.sprite.x, config.sprite.y, config.sprite.key, config.sprite.frame);
             }
 
             if(config.components !== undefined)
