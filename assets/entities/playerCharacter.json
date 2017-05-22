@@ -6,6 +6,7 @@
         "key": "alienGreen",
         "frame": "alienGreen_stand.png"
     },
+    "armed": false,
     "components": [
         {
             "module": "Climber",
@@ -41,6 +42,16 @@
             "module": "Climber",
             "type": "CharacterAnimation",
             "args": [40,48, "alienGreen"]
+        },
+        {
+            "module": "Climber",
+            "type": "CharacterDeath",
+            "args": []
+        },
+        {
+            "module": "Climber",
+            "type": "Health",
+            "args": [3]
         }
     ]
 }

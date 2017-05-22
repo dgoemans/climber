@@ -36,6 +36,21 @@
         "module": "Climber",
         "type": "CharacterAnimation",
         "args": [40,48, "alienPink"]
+    },
+    {
+      "module": "Climber",
+      "type": "DamageOnCollision",
+      "args": []
+    },
+    {
+      "module": "Climber",
+      "type": "CharacterDeath",
+      "args": []
+    },
+    {
+      "module": "Climber",
+      "type": "Health",
+      "args": []
     }
   ]
 }

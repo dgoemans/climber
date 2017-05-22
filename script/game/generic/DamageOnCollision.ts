@@ -5,7 +5,8 @@ module Climber {
             super(gameObject);            
         }
 
-        private collide(other: Core.Entity): void {
+        private hitEntity(other: Core.Entity): void {
+            console.log('hit entity received', other.name);
             other.sendMessage("damage");
         }
     }
