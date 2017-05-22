@@ -30,6 +30,21 @@
         "module": "Climber",
         "type": "CollisionHandler",
         "args": [true]
+    },
+    {
+      "module": "Climber",
+      "type": "DamageOnCollision",
+      "args": []
+    },
+    {
+      "module": "Climber",
+      "type": "CharacterDeath",
+      "args": []
+    },
+    {
+      "module": "Climber",
+      "type": "Health",
+      "args": []
     }
   ]
 }

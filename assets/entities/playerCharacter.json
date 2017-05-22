@@ -5,6 +5,7 @@
         "y": 150,
         "type": "star_red"
     },
+    "armed": false,
     "components": [
         {
             "module": "Climber",
@@ -35,6 +36,16 @@
             "module": "Climber",
             "type": "TileDamage",
             "args": []
+        },
+        {
+            "module": "Climber",
+            "type": "CharacterDeath",
+            "args": []
+        },
+        {
+            "module": "Climber",
+            "type": "Health",
+            "args": [3]
         }
     ]
 }

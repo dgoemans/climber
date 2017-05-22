@@ -16,5 +16,9 @@ module Climber {
             this.sprite.body.collideWorldBounds = true;
             this.sprite.body.immovable = isImmovable;
         }
+
+        protected toggleBody(hasBody: boolean): void {
+            this.sprite.body.enable = hasBody;
+        }
     }
 }

@@ -10,11 +10,12 @@ module Climber {
         }
 
         private damage(): void {
+            console.log('------>damage received');
             this.health--;
 
             if(this.health === 0)
             {
-                this.gameObject.sendMessage("wantsToDie");
+                this.gameObject.sendMessage("killCharacter");
             }
         }
     }

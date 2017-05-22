@@ -55,6 +55,8 @@ module Climber {
             console.log('entity collision');
             let entity1 = this.findEntityBySprite(sprite1);
             let entity2 = this.findEntityBySprite(sprite2);
+
+            console.log(entity1.name, entity2.name);
             
             entity1.sendMessage("collisionWithEntity", entity2);
             entity2.sendMessage("collisionWithEntity", entity1);
