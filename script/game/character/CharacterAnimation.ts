@@ -11,6 +11,7 @@ module Climber {
             this.direction = Direction.None;
             this.sprite.width = width;
             this.sprite.height = height;
+            this.sheetname = sheetname;
         }
 
         private jump(first: string, second: string): void {
